@@ -1,2 +1,2 @@
 # emojifier
-A simple wrapper class around deepmoji model
+A simple wrapper class around [deepmoji](https://deepmoji.mit.edu/) model, published by this [paper (arXiv)](https://arxiv.org/pdf/1708.00524.pdf).
