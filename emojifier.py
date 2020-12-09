@@ -30,7 +30,7 @@ class Emojifier:
             self.vocab = json.load(f)
         self.tokenizer = SentenceTokenizer(self.vocab, 30)
 
-    def emojify(sentence, top_n=5):
+    def emojify(self, sentence, top_n=5):
         tokens, _, _ = self.tokenizer.tokenize_sentences([sentence])
         p = self.model(tokens)[0]
         ids = np.argsort(p)[::-1][:top_n]
