@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 import sys
+import warnings
+warnings.simplefilter("ignore")
 import os.path
 from os import path
 import numpy as np
