@@ -31,6 +31,4 @@ class Predictor(object):
             if emojize.lower() == "true":
                 emojize = True
 
-        print(text, top_n, emojize)
-
         return text, top_n, emojize

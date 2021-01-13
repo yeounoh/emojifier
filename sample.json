@@ -1,0 +1,7 @@
+{
+  "featuresMap": {
+    "text": "Hello World!",
+    "top_n": "5",
+    "emojize": "True"
+  }
+}
