@@ -1,0 +1,8 @@
+type: custom
+name: emojifier
+s3_path: https://s3.console.aws.amazon.com/s3/upload/robinhood-mlflow?region=us-east-1&prefix=cxu_serving
+team: public
+num_replicas: 1
+cpu_cores: 4
+memory_gb: 2
+enable_kafka_log: false

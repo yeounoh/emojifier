@@ -10,6 +10,7 @@ import emoji, json
 from torchmoji.sentence_tokenizer import SentenceTokenizer
 from torchmoji.model_def import torchmoji_emojis
 
+
 # Input arguments
 MODEL_PATH = ""
 VOCAB_PATH = ""
@@ -32,18 +33,21 @@ class Emojifier:
             self.vocab = json.load(f)
         self.tokenizer = SentenceTokenizer(self.vocab, 30)
 
-    def emojify(self, sentence, top_n=5):
+    def emojify(self, sentence, top_n=5, emojize=True):
         tokens, _, _ = self.tokenizer.tokenize_sentences([sentence])
         p = self.model(tokens)[0]
         ids = np.argsort(p)[::-1][:top_n]
-        emojis = map(lambda x: EMOJIS[x], ids)
-        return emoji.emojize(f"{sentence} {' '.join(emojis)}", use_aliases=True)
+        emojis = ' '.join(map(lambda x: EMOJIS[x], ids))
+        if emojize:
+            return emoji.emojize(emojis, use_aliases=True)
+        else:
+            return emojis
 
 
 if __name__ == "__main__":
 
     if len(sys.argv) < 4:
-        print('Usage: python deepmoji.py {MODEL_PATH} {VOCAB_PATH} {SENTENCE}')
+        print('Usage: python emojifier.py {MODEL_PATH} {VOCAB_PATH} {SENTENCE}')
         sys.exit()
 
     MODEL_PATH = sys.argv[1]
