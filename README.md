@@ -7,7 +7,6 @@ ml model deploy --config-dir "mlflow" --description "emojifier"
 ```
 
 # Online serving
-
 ```shell script
 ml model predict --name "emojifier" --json-file sample.json
 ```
