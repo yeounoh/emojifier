@@ -3,7 +3,7 @@ Emojifier based on [Huggingface deepmoji model](https://github.com/huggingface/t
 
 # Deployment
 ```shell script
-ml model deploy --config-dir "mlflow" --description "emojifier"
+ml model deploy --config-dir=./ --description="emojifier"
 ```
 
 # Online serving
