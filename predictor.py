@@ -1,18 +1,17 @@
 from emojifier import Emojifier
-from distutils.util import strtobool
+
 
 class Predictor(object):
-
     def __init__(self, **kwars):
         model_path = "/mnt/project/emojifier_model.bin"
         vocab_path = "/mnt/project/emojifier_vocabulary.json"
         self.model = Emojifier(model_path, vocab_path)
 
-    def predict(self, payload):
+    def predict(self, payload) -> dict:
         text, top_n, emojize = Predictor._get_parameters(payload)
         if not text:
             return None
-        return self.model.emojify(text, top_n, emojize)
+        return {"prediction": self.model.emojify(text, top_n, emojize)}
 
     @staticmethod
     def _get_parameters(payload):

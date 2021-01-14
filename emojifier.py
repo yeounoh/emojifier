@@ -1,15 +1,18 @@
 #!/usr/bin/env python3
+"""
+Emojifier based on the pre-trained deepmoji model published by MIT.
+"""
+import json
 import sys
 import warnings
-warnings.simplefilter("ignore")
-import os.path
 from os import path
-import numpy as np
-import emoji, json
-# https://deepmoji.mit.edu/
-from torchmoji.sentence_tokenizer import SentenceTokenizer
-from torchmoji.model_def import torchmoji_emojis
 
+import emoji
+import numpy as np
+from torchmoji.model_def import torchmoji_emojis
+from torchmoji.sentence_tokenizer import SentenceTokenizer
+
+warnings.simplefilter("ignore")
 
 # Input arguments
 MODEL_PATH = ""
@@ -18,15 +21,11 @@ N_EMOJIS = 5
 
 # Emojis
 EMOJIS = ":joy: :unamused: :weary: :sob: :heart_eyes: :pensive: :ok_hand: :blush: :heart: :smirk: :grin: :notes: :flushed: :100: :sleeping: :relieved: :relaxed: :raised_hands: :two_hearts: :expressionless: :sweat_smile: :pray: :confused: :kissing_heart: :heartbeat: :neutral_face: :information_desk_person: :disappointed: :see_no_evil: :tired_face: :v: :sunglasses: :rage: :thumbsup: :cry: :sleepy: :yum: :triumph: :hand: :mask: :clap: :eyes: :gun: :persevere: :smiling_imp: :sweat: :broken_heart: :yellow_heart: :musical_note: :speak_no_evil: :wink: :skull: :confounded: :smile: :stuck_out_tongue_winking_eye: :angry: :no_good: :muscle: :facepunch: :purple_heart: :sparkling_heart: :blue_heart: :grimacing: :sparkles:".split(
-    ' ')
-
-"""
-Emojifier based on the pre-trained deepmoji model published by MIT. 
-"""
+    ' '
+)
 
 
 class Emojifier:
-
     def __init__(self, model_path, vocab_path):
         self.model = torchmoji_emojis(model_path)
         with open(vocab_path, 'r') as f:
@@ -47,7 +46,9 @@ class Emojifier:
 if __name__ == "__main__":
 
     if len(sys.argv) < 4:
-        print('Usage: python emojifier.py {MODEL_PATH} {VOCAB_PATH} {SENTENCE}')
+        print(
+            'Usage: python emojifier.py {MODEL_PATH} {VOCAB_PATH} {SENTENCE}'
+        )
         sys.exit()
 
     MODEL_PATH = sys.argv[1]
